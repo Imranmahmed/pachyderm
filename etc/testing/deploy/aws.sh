@@ -43,7 +43,8 @@ case "${1}" in
     ;;
   --create)
     set -x
-    sudo $(dirname "${0}")/../../deploy/aws.sh --region=${REGION} --zone=${ZONE} --state=${STATE_STORE} --no-metrics
+    deploy_script="$(realpath "$(dirname "${0}")/../../deploy/aws.sh")"
+    sudo "${deploy_script}" --region=${REGION} --zone=${ZONE} --state=${STATE_STORE} --no-metrics
     set +x
     ;;
 esac
